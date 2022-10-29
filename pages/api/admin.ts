@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nc from 'next-connect';
 import { catalogueModels } from '../../models/catalogueModels';
+import { corsPolicy } from '../../middlewares/corsPolicy';
 import { tokenAuth } from '../../middlewares/tokenAuth';
 import { dbConnection } from '../../middlewares/dbConnection'
 import { cosmicImageUploader, upload } from '../../services/cosmicImageUploader';
@@ -144,4 +145,4 @@ export const config = {
     }
 };
 
-export default tokenAuth(dbConnection(handler));
+export default corsPolicy(tokenAuth(dbConnection(handler)));

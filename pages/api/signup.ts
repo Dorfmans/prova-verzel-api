@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import type { signUpTypes } from '../../types/signUpTypes';
 import { userModels } from '../../models/userModels';
 import { dbConnection } from '../../middlewares/dbConnection'
+import { corsPolicy } from '../../middlewares/corsPolicy';
 import nc from 'next-connect';
 import { upload } from '../../services/cosmicImageUploader';
 
@@ -44,4 +45,4 @@ export const config = {
     }
 }
 
-export default dbConnection(handler);
+export default corsPolicy(dbConnection(handler));

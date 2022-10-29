@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { catalogueModels } from '../../models/catalogueModels';
 import { dbConnection } from '../../middlewares/dbConnection'
+import { corsPolicy } from '../../middlewares/corsPolicy';
+
 
 
 const home = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -19,4 +21,4 @@ const home = async (req: NextApiRequest, res: NextApiResponse) => {
   return res.status(405).json({ error: 'Method invalid' });
 }
 
-export default dbConnection(home);
+export default corsPolicy(dbConnection(home));

@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { dbConnection } from '../../middlewares/dbConnection';
+import { corsPolicy } from '../../middlewares/corsPolicy';
 import { userModels } from '../../models/userModels';
 import jwt from 'jsonwebtoken';
 import { loginTypes } from "../../types/loginTypes";
@@ -34,4 +35,4 @@ const login = async (req: NextApiRequest, res: NextApiResponse<loginTypes | any>
     return res.status(405).json({ error: 'Method invalid' });
 }
 
-export default dbConnection(login);
+export default corsPolicy(dbConnection(login));
