@@ -47,6 +47,16 @@ Choose a key to 'JWT_KEY'
 
 <br>
 
+Install dependencies:
+
+```bash
+npm i
+# or
+yarn
+```
+
+<br>
+
 Run the development server:
 
 ```bash
